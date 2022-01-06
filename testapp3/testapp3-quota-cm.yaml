@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota
+spec:
+  hard:
+    limits.cpu: "16"
+    limits.ephemeral-storage: 20Gi
+    limits.memory: 46Gi
+    persistentvolumeclaims: "10"
+    pods: "25"
+    requests.cpu: "16"
+    requests.ephemeral-storage: 15Gi
+    requests.memory: 46Gi
+    services: "15"
+
