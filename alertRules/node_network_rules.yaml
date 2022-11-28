@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  creationTimestamp: null
+  labels:
+    prometheus: 
+    role: alert-rules
+  name: node.network.rules
+spec:
+  groups:
+  - name: networking
+    rules:
+    - alert: NodeNetworkIfDevDown
+      annotations:
+        description: node {{ $labels.instance }} network device {{ $labels.device }} is down.
+        summary: node {{ $labels.instance }} network error.
+      expr: node_network_info{device="genev_sys_6081",operstate!="unknown"} > 0 or node_network_info{device="vxlan_sys_4789",operstate!="unknown"} > 0
+      labels:
+        severity: critical
+        app: nodenetwork
