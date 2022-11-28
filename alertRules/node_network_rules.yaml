@@ -6,6 +6,7 @@ metadata:
     prometheus: 
     role: alert-rules
   name: node.network.rules
+  namespace: openshift-monitoring
 spec:
   groups:
   - name: networking
